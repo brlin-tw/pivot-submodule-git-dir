@@ -119,7 +119,7 @@ printf \
 
 printf \
     'Info: Checking whether the .git directory is a submodule pointer file...\n'
-local_git_direntry="${script_dir}/.git"
+local_git_direntry="${PWD}/.git"
 if ! test -f "${local_git_direntry}"; then
     printf \
         'Error: the local ".git" directory entry is not a submodule pointer file.\n' \
