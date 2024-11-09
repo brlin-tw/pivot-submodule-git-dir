@@ -166,6 +166,15 @@ printf \
     "${submodule_repository_path}"
 
 printf \
+    'Info: Checking whether the submodule repository path really exists...\n'
+if ! test -e "${submodule_repository_path}"; then
+    printf \
+        'Error: The submodule repository path does not exist, ensure this repository worktree is not mounted elsewhere.\n' \
+        1>&2
+    exit 1
+fi
+
+printf \
     'Info: Backing up the original local Git configuration file...\n'
 local_git_config_file="${submodule_repository_path}/config"
 backed_up_local_git_config_file="${local_git_config_file}.orig-${operation_timestamp}"
